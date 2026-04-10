@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
 
 const Collections = () => {
@@ -14,12 +13,13 @@ const Collections = () => {
 
   return (
     <div className="relative min-h-[100svh] bg-zinc-900 flex items-center justify-center overflow-hidden">
-      {/* Background Image Loading with Lazy & Fallback */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/assets/collection-teaser.jpg" 
+          src="/assets/collection-teaser.webp" 
           alt="Collection Teaser"
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover opacity-30 object-[center_top] scale-105"
           onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1583391733958-6c507c5ac937?auto=format&fit=crop&q=80&w=2000' }}
         />
@@ -27,12 +27,7 @@ const Collections = () => {
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto w-full pt-20">
-        <motion.div
-           initial={{ opacity: 0, scale: 0.95 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-           className="relative overflow-hidden backdrop-blur-2xl bg-zinc-900/40 border border-zinc-700/50 p-12 md:p-20 rounded-3xl shadow-2xl group"
-        >
+        <div className="relative overflow-hidden backdrop-blur-2xl bg-zinc-900/40 border border-zinc-700/50 p-12 md:p-20 rounded-3xl shadow-2xl group animate-[fadeSlideUp_1.5s_ease-out_both]">
           {/* Shimmer Effect */}
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg] group-hover:animate-[shimmer_2s_infinite]"></div>
 
@@ -58,7 +53,7 @@ const Collections = () => {
             <MessageCircle size={18} className="text-zinc-900" />
             <span className="text-xs uppercase tracking-widest font-semibold">Request Private Catalog</span>
           </button>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

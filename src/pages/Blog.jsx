@@ -27,13 +27,9 @@ const Blog = () => {
     <div className="pt-32 pb-24 min-h-screen bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {/* Header — CSS animation, no framer-motion */}
         <div className="mb-20 text-center md:text-left border-b border-zinc-200 pb-12 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="animate-[fadeSlideUp_0.8s_ease-out_both]">
             <span className="text-zinc-400 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
               SSRJ Journal
             </span>
@@ -43,10 +39,10 @@ const Blog = () => {
             <p className="text-lg md:text-xl text-zinc-500 font-light leading-relaxed max-w-2xl">
               Editorial insights into the world of luxury handlooms, bridal couture, and the preservation of Indian heritage weaving.
             </p>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Blog Feed (Split Grid Layout) */}
+        {/* Blog Feed — Retain whileInView for scroll-reveal */}
         <div className="space-y-32">
           {posts.map((post, index) => (
             <motion.article 
@@ -63,6 +59,7 @@ const Blog = () => {
                   src={post.imageUrl} 
                   alt={post.title}
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000 ease-[0.22,1,0.36,1]"
                 />
                 <div className="absolute top-6 left-6">
@@ -96,9 +93,9 @@ const Blog = () => {
                   ))}
                 </div>
 
-                {/* Call to action read more */}
+                {/* Call to action */}
                 <div className="mt-12">
-                  <Link to="/blog" className="inline-flex items-center space-x-2 text-zinc-900 font-bold tracking-wider uppercase text-sm border-b-2 border-zinc-900 pb-1 hover:text-zinc-500 hover:border-zinc-500 transition-colors">
+                  <Link to="/blog" className="inline-flex items-center space-x-2 text-zinc-900 font-bold tracking-wider uppercase text-sm border-b-2 border-zinc-900 pb-1 hover:text-zinc-500 hover:border-zinc-500 transition-colors duration-300">
                     <span>Share Article</span>
                     <ChevronRight size={16} />
                   </Link>

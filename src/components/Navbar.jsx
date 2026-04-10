@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, MessageCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +14,12 @@ const Navbar = () => {
 
   const location = useLocation();
   const isHome = location.pathname === '/';
-  
-  // If we are not on the home page, we need dark text immediately because the background is white.
   const useDarkText = scrolled || !isHome;
 
-  const menuVariants = {
-    closed: { opacity: 0, y: "-100%" },
-    open: { opacity: 1, y: 0 }
-  };
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   return (
     <nav 
@@ -72,7 +69,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
              <Link 
               to="/contact"
-              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-2.5 rounded-full transition-all transform hover:scale-[1.02] active:scale-100 duration-300 ${
+              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-100 ${
                 useDarkText 
                   ? 'bg-zinc-900/5 border-zinc-900/10 text-zinc-900 hover:bg-zinc-900 hover:text-white shadow-sm'
                   : 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-zinc-900 shadow-md'
@@ -91,71 +88,46 @@ const Navbar = () => {
                 useDarkText ? 'text-zinc-900 bg-white/50 border-zinc-100' : 'text-white bg-white/10 border-white/20'
               }`}
             >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div key="close" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><X size={20} /></motion.div>
-                ) : (
-                  <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><Menu size={20} /></motion.div>
-                )}
-              </AnimatePresence>
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center pt-20 h-screen"
-          >
-            <div className="flex flex-col items-center space-y-8 w-full px-6">
-              {[
-                { path: '/', label: 'Home' },
-                { path: '/collections', label: 'Collections' },
-                { path: '/blog', label: 'Journal' },
-              ].map((link, i) => (
-                <motion.div 
-                   key={link.path}
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ delay: i * 0.1 + 0.2 }}
-                   className="w-full text-center"
-                >
-                  <NavLink 
-                    to={link.path} 
-                    onClick={() => setIsOpen(false)} 
-                    className="text-4xl font-serif text-zinc-900 w-full block hover:text-zinc-500 transition-colors"
-                  >
-                    {link.label}
-                  </NavLink>
-                </motion.div>
-              ))}
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-12"
-              >
-                <Link 
-                  to="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center space-x-2 bg-zinc-900 text-white px-8 py-4 rounded-full shadow-2xl"
-                >
-                  <MessageCircle size={20} />
-                  <span className="text-sm uppercase tracking-widest font-medium">Contact Us</span>
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile Menu Dropdown — Pure CSS transition */}
+      <div 
+        className={`fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center pt-20 h-screen transition-all duration-500 ease-[0.22,1,0.36,1] ${
+          isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col items-center space-y-8 w-full px-6">
+          {[
+            { path: '/', label: 'Home' },
+            { path: '/collections', label: 'Collections' },
+            { path: '/blog', label: 'Journal' },
+          ].map((link) => (
+            <NavLink 
+              key={link.path}
+              to={link.path} 
+              onClick={() => setIsOpen(false)} 
+              className="text-4xl font-serif text-zinc-900 w-full block text-center hover:text-zinc-500 transition-colors duration-300"
+            >
+              {link.label}
+            </NavLink>
+          ))}
+          
+          <div className="mt-12">
+            <Link 
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center space-x-2 bg-zinc-900 text-white px-8 py-4 rounded-full shadow-2xl hover:bg-zinc-800 transition-colors duration-300"
+            >
+              <MessageCircle size={20} />
+              <span className="text-sm uppercase tracking-widest font-medium">Contact Us</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
@@ -7,13 +6,9 @@ const Contact = () => {
     <div className="pt-32 pb-24 min-h-screen bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {/* Header — CSS animation */}
         <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="animate-[fadeSlideUp_0.8s_ease-out_both]">
             <span className="text-zinc-500 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
               Private Appointments
             </span>
@@ -23,18 +18,13 @@ const Contact = () => {
             <p className="text-lg text-zinc-600 font-light max-w-2xl mx-auto">
               Our concierge team is at your disposal to arrange bespoke viewings, styling consultations, or to answer any inquiries regarding our collections.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white p-10 md:p-12 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100"
-          >
+          {/* Contact Form — CSS stagger animation */}
+          <div className="bg-white p-10 md:p-12 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100 animate-[fadeSlideUp_0.8s_ease-out_0.2s_both]">
             <h2 className="text-2xl font-serif text-zinc-900 mb-8">Send an Inquiry</h2>
             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -68,19 +58,14 @@ const Contact = () => {
                 <textarea id="message" rows="4" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors resize-none" placeholder="How can we assist you?"></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-zinc-900 text-white font-medium tracking-widest uppercase text-sm px-8 py-5 rounded-xl hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/20">
+              <button type="submit" className="w-full bg-zinc-900 text-white font-medium tracking-widest uppercase text-sm px-8 py-5 rounded-xl hover:bg-zinc-800 transition-colors duration-300 shadow-lg shadow-zinc-900/20">
                 Submit Request
               </button>
             </form>
-          </motion.div>
+          </div>
 
-          {/* Contact Details & Map Area */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col justify-between"
-          >
+          {/* Contact Details & Map Area — CSS stagger */}
+          <div className="flex flex-col justify-between animate-[fadeSlideUp_0.8s_ease-out_0.4s_both]">
             <div>
               <h2 className="text-2xl font-serif text-zinc-900 mb-8">The Flagship Store</h2>
               
@@ -131,16 +116,18 @@ const Contact = () => {
                <img 
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" 
                   alt="Delhi Map Detail"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover mix-blend-luminosity opacity-40 group-hover:opacity-60 transition-opacity duration-500" 
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="backdrop-blur-md bg-white/80 px-6 py-3 rounded-full shadow-lg border border-white flex items-center space-x-2 cursor-pointer hover:shadow-xl transition-all">
+                   <div className="backdrop-blur-md bg-white/80 px-6 py-3 rounded-full shadow-lg border border-white flex items-center space-x-2 cursor-pointer hover:shadow-xl transition-all duration-300">
                      <MapPin size={16} className="text-zinc-900" />
                      <span className="text-xs uppercase font-semibold tracking-widest text-zinc-900">Get Directions</span>
                    </div>
                 </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

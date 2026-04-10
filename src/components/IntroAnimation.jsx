@@ -1,68 +1,114 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
 
 const IntroAnimation = ({ onComplete }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [phase, setPhase] = useState('idle'); // idle | hold | slide | done
+  const calledComplete = useRef(false);
 
   useEffect(() => {
-    // Check if the user has already visited in this session.
-    const hasVisited = sessionStorage.getItem('ssrj_visited_v4');
+    const hasVisited = sessionStorage.getItem('ssrj-visited');
     
     if (hasVisited) {
-      setTimeout(() => {
-        setIsVisible(false);
+      setPhase('done');
+      if (!calledComplete.current) {
+        calledComplete.current = true;
         onComplete();
-      }, 0);
+      }
       return;
     }
 
-    sessionStorage.setItem('ssrj_visited_v4', 'true');
+    sessionStorage.setItem('ssrj-visited', 'true');
 
-    // The entire animation sequence takes roughly 1 second.
-    // Unmount sequence occurs after 1.5s to allow for clean exit animation.
-    const hideTimer = setTimeout(() => {
-      setIsVisible(false);
-      setTimeout(onComplete, 500);
-    }, 1500);
+    // Phase 1: Hold the curtain visible for 400ms
+    setPhase('hold');
+    const slideTimer = setTimeout(() => {
+      // Phase 2: Slide it off-screen over 600ms
+      setPhase('slide');
+    }, 400);
+
+    const doneTimer = setTimeout(() => {
+      setPhase('done');
+      if (!calledComplete.current) {
+        calledComplete.current = true;
+        onComplete();
+      }
+    }, 1100); // 400ms hold + 600ms slide + 100ms buffer
 
     return () => {
-      clearTimeout(hideTimer);
+      clearTimeout(slideTimer);
+      clearTimeout(doneTimer);
     };
   }, [onComplete]);
 
-  if (!isVisible) return null;
+  if (phase === 'done') return null;
 
   return (
-    <AnimatePresence>
-       <motion.div
-        key="intro-wrap"
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950 pointer-events-none overflow-hidden"
+    <div
+      className="fixed inset-0 z-[100] pointer-events-none overflow-hidden"
+      aria-hidden="true"
+    >
+      {/* Dark backdrop that fades */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: '#09090b',
+          opacity: phase === 'slide' ? 0 : 1,
+          transition: 'opacity 0.6s cubic-bezier(0.76, 0, 0.24, 1)',
+        }}
+      />
+
+      {/* Golden Cloth Curtain */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(135deg, #b45309 0%, #eab308 35%, #f59e0b 50%, #d97706 75%, #92400e 100%)',
+          transform: phase === 'slide' ? 'translateX(100%)' : 'translateX(0%)',
+          transition: 'transform 0.6s cubic-bezier(0.76, 0, 0.24, 1)',
+          borderTopLeftRadius: phase === 'slide' ? '50%' : '0%',
+          borderBottomLeftRadius: phase === 'slide' ? '50%' : '0%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '-30px 0 80px rgba(0,0,0,0.6)',
+        }}
       >
-        {/* The Sliding Golden Curtain layer that moves Left to Right */}
-        <motion.div
-           initial={{ x: "0%" }}
-           animate={{ x: "100%" }}
-           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
-           className="absolute inset-0 w-full h-full bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-700 shadow-[[-30px_0_100px_rgba(0,0,0,0.8)]] z-20 flex items-center justify-center origin-right"
+        {/* Shimmer streak on the gold */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: '25%',
+            width: '8%',
+            background: 'linear-gradient(180deg, transparent, rgba(255,255,255,0.25), transparent)',
+            transform: 'skewX(-20deg)',
+          }}
+        />
+
+        {/* SSRJ Logo Text */}
+        <h1
+          style={{
+            fontSize: 'clamp(3rem, 8vw, 6rem)',
+            letterSpacing: '0.3em',
+            fontFamily: 'serif',
+            color: 'white',
+            textTransform: 'uppercase',
+            fontWeight: 300,
+            textShadow: '0 4px 20px rgba(0,0,0,0.4)',
+            opacity: phase === 'slide' ? 0 : 1,
+            transition: 'opacity 0.3s ease',
+            position: 'relative',
+            zIndex: 10,
+          }}
         >
-            {/* Shimmer on the gold */}
-            <div className="absolute top-0 bottom-0 left-[20%] w-[10%] bg-white/20 skew-x-[-20deg]"></div>
-            
-            <motion.div
-               initial={{ opacity: 1, scale: 1 }}
-               animate={{ opacity: 0, scale: 1.1 }}
-               transition={{ duration: 0.5, delay: 0.5 }}
-               className="relative z-30"
-            >
-               <h1 className="text-6xl md:text-8xl tracking-[0.3em] font-serif text-white uppercase font-light drop-shadow-lg">
-                 SSRJ
-               </h1>
-            </motion.div>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+          SSRJ
+        </h1>
+      </div>
+    </div>
   );
 };
 
