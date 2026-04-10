@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    subject: 'Bridal Saree & Lehenga Inquiry',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const { firstName, lastName, mobile, subject, message } = formData;
+    
+    // Construct the structured WhatsApp message
+    const waMessage = `*New Inquiry for SSRJ*%0A%0A` +
+      `*Name:* ${firstName} ${lastName}%0A` +
+      `*Mobile:* ${mobile}%0A` +
+      `*Type:* ${subject}%0A%0A` +
+      `*Message:* ${message}`;
+    
+    const waUrl = `https://wa.me/917037404555?text=${waMessage}`;
+    
+    window.open(waUrl, '_blank');
+  };
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,26 +59,55 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-white p-10 md:p-12 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100 animate-[fadeSlideUp_0.8s_ease-out_0.2s_both]">
             <h2 className="text-2xl font-serif text-zinc-900 mb-8">Send an Inquiry</h2>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="firstName" className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">First Name</label>
-                  <input type="text" id="firstName" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" placeholder="e.g. Ananya" />
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    required
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" 
+                    placeholder="e.g. Ananya" 
+                  />
                 </div>
                 <div>
                   <label htmlFor="lastName" className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Last Name</label>
-                  <input type="text" id="lastName" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" placeholder="e.g. Sharma" />
+                  <input 
+                    type="text" 
+                    id="lastName" 
+                    required
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" 
+                    placeholder="e.g. Sharma" 
+                  />
                 </div>
               </div>
               
               <div>
                 <label htmlFor="mobile" className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Mobile Number</label>
-                <input type="tel" id="mobile" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" placeholder="+91 86500 00000" />
+                <input 
+                  type="tel" 
+                  id="mobile" 
+                  required
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors" 
+                  placeholder="+91 86500 00000" 
+                />
               </div>
 
               <div>
                 <label htmlFor="subject" className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Subject</label>
-                <select id="subject" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors cursor-pointer appearance-none">
+                <select 
+                  id="subject" 
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors cursor-pointer appearance-none"
+                >
                   <option>Bridal Saree & Lehenga Inquiry</option>
                   <option>Bespoke Groomswear Consultation</option>
                   <option>Handloom Archives Access</option>
@@ -55,11 +117,19 @@ const Contact = () => {
 
               <div>
                 <label htmlFor="message" className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">Your Message</label>
-                <textarea id="message" rows="4" className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors resize-none" placeholder="How can we assist you?"></textarea>
+                <textarea 
+                  id="message" 
+                  rows="4" 
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full bg-zinc-50 border border-zinc-200 text-zinc-900 text-sm rounded-xl focus:ring-zinc-900 focus:border-zinc-900 block p-4 outline-none transition-colors resize-none" 
+                  placeholder="How can we assist you?"
+                ></textarea>
               </div>
 
               <button type="submit" className="w-full bg-zinc-900 text-white font-medium tracking-widest uppercase text-sm px-8 py-5 rounded-xl hover:bg-zinc-800 transition-colors duration-300 shadow-lg shadow-zinc-900/20">
-                Submit Request
+                Submit Request via WhatsApp
               </button>
             </form>
           </div>
