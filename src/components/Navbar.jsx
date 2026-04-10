@@ -1,0 +1,147 @@
+import React, { useState, useEffect } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Menu, X, MessageCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const menuVariants = {
+    closed: { opacity: 0, y: "-100%" },
+    open: { opacity: 1, y: 0 }
+  };
+
+  return (
+    <nav 
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ease-[0.22,1,0.36,1] ${
+        scrolled ? 'bg-white/70 backdrop-blur-lg shadow-md py-4' : 'bg-transparent py-8'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center transition-all duration-300">
+          
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0 flex items-center z-50 group space-x-3">
+             <img 
+               src="/assets/logo.png" 
+               alt="Saree Suhag & Rajgharana Garments" 
+               className="h-10 md:h-12 w-auto object-contain drop-shadow-md"
+             />
+             <span className="text-xl md:text-2xl font-serif text-zinc-900 tracking-tight font-medium group-hover:opacity-80 transition-opacity">
+               SSRJ
+             </span>
+          </Link>
+
+          {/* Desktop Links */}
+          <div className="hidden md:flex items-center space-x-12">
+            {[
+              { path: '/', label: 'Home' },
+              { path: '/collections', label: 'Collections' },
+              { path: '/blog', label: 'Journal' }
+            ].map((link) => (
+              <NavLink 
+                key={link.path}
+                to={link.path} 
+                className={({ isActive }) => 
+                  `text-sm tracking-wide transition-all duration-300 relative group ${isActive ? 'text-zinc-900 font-medium' : 'text-zinc-500 hover:text-zinc-900'}`
+                }
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-zinc-900 transition-all duration-300 group-hover:w-full"></span>
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="hidden md:flex items-center">
+             <Link 
+              to="/contact"
+              className="flex items-center space-x-2 bg-zinc-900/5 backdrop-blur-md border border-zinc-900/10 text-zinc-900 px-6 py-2.5 rounded-full hover:bg-zinc-900 hover:text-white transition-all transform hover:scale-[1.02] active:scale-100 duration-300"
+            >
+              <MessageCircle size={16} />
+              <span className="text-xs uppercase tracking-widest font-semibold">Inquire</span>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center z-50">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-zinc-900 focus:outline-none p-2 w-10 h-10 flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full border border-zinc-100"
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div key="close" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><X size={20} /></motion.div>
+                ) : (
+                  <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><Menu size={20} /></motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={menuVariants}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 flex flex-col items-center justify-center pt-20 h-screen"
+          >
+            <div className="flex flex-col items-center space-y-8 w-full px-6">
+              {[
+                { path: '/', label: 'Home' },
+                { path: '/collections', label: 'Collections' },
+                { path: '/blog', label: 'Journal' },
+              ].map((link, i) => (
+                <motion.div 
+                   key={link.path}
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ delay: i * 0.1 + 0.2 }}
+                   className="w-full text-center"
+                >
+                  <NavLink 
+                    to={link.path} 
+                    onClick={() => setIsOpen(false)} 
+                    className="text-4xl font-serif text-zinc-900 w-full block hover:text-zinc-500 transition-colors"
+                  >
+                    {link.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="mt-12"
+              >
+                <Link 
+                  to="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center space-x-2 bg-zinc-900 text-white px-8 py-4 rounded-full shadow-2xl"
+                >
+                  <MessageCircle size={20} />
+                  <span className="text-sm uppercase tracking-widest font-medium">Contact Us</span>
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;

@@ -1,0 +1,43 @@
+
+D:\c-files\my-project\saree-suhag-website\src\components\Hero.jsx
+  1:25  error  'useEffect' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\components\IntroAnimation.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  10:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   8 |     const hasVisited = sessionStorage.getItem('ssrj_visited');
+   9 |     if (hasVisited) {
+> 10 |       setIsVisible(false);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  11 |       onComplete();
+  12 |     } else {
+  13 |       sessionStorage.setItem('ssrj_visited', 'true');  react-hooks/set-state-in-effect
+
+D:\c-files\my-project\saree-suhag-website\src\components\Navbar.jsx
+  4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\components\ProductGrid.jsx
+  4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\pages\Blog.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\pages\Collections.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\pages\Contact.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\c-files\my-project\saree-suhag-website\src\pages\Home.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+✖ 10 problems (10 errors, 0 warnings)
+
