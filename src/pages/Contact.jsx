@@ -14,13 +14,13 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-zinc-400 tracking-[0.2em] uppercase text-xs font-semibold mb-4 block">
+            <span className="text-zinc-500 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
               Private Appointments
             </span>
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-zinc-900 mb-6">
               Connect with SSRJ
             </h1>
-            <p className="text-lg text-zinc-500 font-light max-w-2xl mx-auto">
+            <p className="text-lg text-zinc-600 font-light max-w-2xl mx-auto">
               Our concierge team is at your disposal to arrange bespoke viewings, styling consultations, or to answer any inquiries regarding our collections.
             </p>
           </motion.div>

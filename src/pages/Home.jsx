@@ -22,13 +22,13 @@ const Home = () => {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/white-diamond-dark.png')] pointer-events-none mix-blend-overlay"></div>
 
           <div className="relative z-10 max-w-2xl mx-auto">
-            <span className="text-zinc-400 tracking-[0.2em] uppercase text-xs font-semibold mb-4 block">
+            <span className="text-zinc-600 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
               The Velvet Rope
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-zinc-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif text-zinc-950 mb-6 drop-shadow-sm">
               Curating the Royal Collection. Unveiling Soon.
             </h2>
-            <p className="text-zinc-500 font-light mb-10 text-lg">
+            <p className="text-zinc-700 font-medium mb-10 text-lg">
               An exclusive selection of handcrafted masterpieces reserved for the discerning few. 
             </p>
             

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,6 +12,12 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  
+  // If we are not on the home page, we need dark text immediately because the background is white.
+  const useDarkText = scrolled || !isHome;
 
   const menuVariants = {
     closed: { opacity: 0, y: "-100%" },
@@ -32,9 +38,9 @@ const Navbar = () => {
              <img 
                src="/assets/logo.png" 
                alt="Saree Suhag & Rajgharana Garments" 
-               className="h-10 md:h-12 w-auto object-contain drop-shadow-md"
+               className={`h-16 md:h-20 w-auto object-contain drop-shadow-md transition-all duration-300 ${useDarkText ? '' : 'brightness-[5] drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]'}`}
              />
-             <span className="text-xl md:text-2xl font-serif text-zinc-900 tracking-tight font-medium group-hover:opacity-80 transition-opacity">
+             <span className={`text-xl md:text-2xl font-serif tracking-tight font-medium group-hover:opacity-80 transition-colors duration-300 ${useDarkText ? 'text-zinc-900' : 'text-zinc-50 drop-shadow-lg'}`}>
                SSRJ
              </span>
           </Link>
@@ -50,11 +56,15 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path} 
                 className={({ isActive }) => 
-                  `text-sm tracking-wide transition-all duration-300 relative group ${isActive ? 'text-zinc-900 font-medium' : 'text-zinc-500 hover:text-zinc-900'}`
+                  `text-sm tracking-wide transition-colors duration-300 relative group ${
+                    isActive 
+                      ? (useDarkText ? 'text-zinc-900 font-medium' : 'text-zinc-50 font-medium drop-shadow-md') 
+                      : (useDarkText ? 'text-zinc-500 hover:text-zinc-900' : 'text-zinc-300 hover:text-white drop-shadow-md')
+                  }`
                 }
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-zinc-900 transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-px transition-all duration-300 group-hover:w-full ${useDarkText ? 'bg-zinc-900' : 'bg-white'}`}></span>
               </NavLink>
             ))}
           </div>
@@ -62,7 +72,11 @@ const Navbar = () => {
           <div className="hidden md:flex items-center">
              <Link 
               to="/contact"
-              className="flex items-center space-x-2 bg-zinc-900/5 backdrop-blur-md border border-zinc-900/10 text-zinc-900 px-6 py-2.5 rounded-full hover:bg-zinc-900 hover:text-white transition-all transform hover:scale-[1.02] active:scale-100 duration-300"
+              className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-2.5 rounded-full transition-all transform hover:scale-[1.02] active:scale-100 duration-300 ${
+                useDarkText 
+                  ? 'bg-zinc-900/5 border-zinc-900/10 text-zinc-900 hover:bg-zinc-900 hover:text-white shadow-sm'
+                  : 'bg-white/10 border-white/20 text-white hover:bg-white hover:text-zinc-900 shadow-md'
+              }`}
             >
               <MessageCircle size={16} />
               <span className="text-xs uppercase tracking-widest font-semibold">Inquire</span>
@@ -73,7 +87,9 @@ const Navbar = () => {
           <div className="md:hidden flex items-center z-50">
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="text-zinc-900 focus:outline-none p-2 w-10 h-10 flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full border border-zinc-100"
+              className={`focus:outline-none p-2 w-10 h-10 flex items-center justify-center backdrop-blur-md rounded-full border transition-colors duration-300 ${
+                useDarkText ? 'text-zinc-900 bg-white/50 border-zinc-100' : 'text-white bg-white/10 border-white/20'
+              }`}
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
