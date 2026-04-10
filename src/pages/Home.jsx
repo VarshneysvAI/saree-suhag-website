@@ -23,20 +23,20 @@ const Home = () => {
 
           <div className="relative z-10 max-w-2xl mx-auto">
             <span className="text-zinc-600 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
-              The Velvet Rope
+              The Royal Archives
             </span>
             <h2 className="text-4xl md:text-5xl font-serif text-zinc-950 mb-6 drop-shadow-sm">
-              Curating the Royal Collection. Unveiling Soon.
+              Masterpieces Take Time.
             </h2>
             <p className="text-zinc-700 font-medium mb-10 text-lg">
-              An exclusive selection of handcrafted masterpieces reserved for the discerning few. 
+              Our artisans are currently finalizing the digital showcase of our premium bridal and unstitched collections. Perfection cannot be rushed.
             </p>
             
             <Link 
               to="/collections" 
               className="inline-flex items-center justify-center space-x-3 bg-zinc-900 text-white px-8 py-4 rounded-full hover:bg-zinc-800 transition-all transform hover:scale-[1.02] active:scale-100 duration-300"
             >
-              <span className="text-sm uppercase tracking-widest font-medium">Request Access</span>
+              <span className="text-sm uppercase tracking-widest font-medium">Explore the Archives</span>
               <ArrowRight size={16} />
             </Link>
           </div>

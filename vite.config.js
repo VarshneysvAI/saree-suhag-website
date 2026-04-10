@@ -9,24 +9,8 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules/react-dom')) {
-            return 'vendor';
-          }
-          if (id.includes('node_modules/react-router')) {
-            return 'vendor';
-          }
-          if (id.includes('node_modules/react/')) {
-            return 'vendor';
-          }
-          if (id.includes('node_modules/framer-motion')) {
-            return 'animations';
-          }
-        },
-      },
-    },
-    assetsInlineLimit: 0,
+    // Simplified build for Vercel stability
+    assetsInlineLimit: 4096,
+    sourcemap: false,
   },
 })

@@ -9,16 +9,15 @@ const Blog = () => {
       id: 1,
       title: "The Art of the Banarasi Saree: A 2026 Perspective",
       excerpt: "Exploring the delicate balance between centuries of weaving tradition and the modern minimalistic aesthetic of the contemporary Indian bride.",
-      date: "October 12, 2026",
+      date: "April 10, 2026",
       readTime: "4 min read",
       category: "Heritage",
+      author: "SSRJ Team",
       imageUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200", 
       content: `
-        The Banarasi saree is not merely a garment; it is an architectural marvel of silk and zari. In 2026, we see a renaissance in how these heirlooms are perceived. Gone are the days of overwhelming, heavy drapes that restricted movement. The modern approach focuses on breathability, subtle gold accents, and the profound depth of the fabric's dye.
+        The handloom saree is not merely a garment; it is an architectural marvel of silk and zari. Today, we are witnessing a renaissance in how these heirlooms are styled and perceived.
 
-        At SSRJ, our weavers in Varanasi have spent the last decade perfecting a technique that retains the visual weight of classic brocade while significantly reducing the actual weight of the fabric. This allows the modern bride to move with grace, free from the confines of an overly structured ensemble.
-
-        To appreciate a Banarasi is to appreciate time. A single saree can take anywhere from 15 days to six months to complete. As we look towards the future of ethnic fashion, sustainability and slow fashion are at the forefront—and nothing embodies slow fashion quite like the rhythmic clacking of a handloom.
+        The modern approach focuses on breathability, subtle gold accents, and the profound depth of the fabric's dye. At SSRJ, our curation focuses on pieces that retain the visual weight of classic brocade while allowing the wearer to move with effortless grace.
       `
     }
   ];

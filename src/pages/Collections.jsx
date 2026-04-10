@@ -2,10 +2,10 @@ import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
 const Collections = () => {
-  const WHATSAPP_NUMBER = "1234567890";
+  const WHATSAPP_NUMBER = "917037404555";
 
   const handleWhatsAppBuy = () => {
-    const message = "Hello SSRJ Concierge, I would like to request access to the Private Catalog.";
+    const message = "Hello SSRJ, I would like to request access to the private bridal catalog.";
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
@@ -32,7 +32,7 @@ const Collections = () => {
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg] group-hover:animate-[shimmer_2s_infinite]"></div>
 
           <span className="relative z-10 text-zinc-400 tracking-[0.3em] uppercase text-xs font-semibold mb-6 block drop-shadow-md">
-            The Private Reserves
+            The Royal Archives
           </span>
           
           <h1 className="relative z-10 text-4xl md:text-6xl font-serif text-white mb-8 leading-tight drop-shadow-lg">
@@ -43,7 +43,7 @@ const Collections = () => {
           <div className="w-16 h-[1px] bg-zinc-700 mx-auto mb-10"></div>
           
           <p className="text-zinc-300 font-light mb-12 text-lg max-w-lg mx-auto leading-relaxed">
-            Due to our commitment to craftsmanship, our seasonal archives are accessible by private appointment or digital concierge only.
+            Masterpieces take time. Our artisans are currently finalizing the digital showcase of our premium bridal and unstitched collections. Perfection cannot be rushed. To request a private catalog or schedule an exclusive consultation, connect with our digital concierge.
           </p>
 
           <button 
