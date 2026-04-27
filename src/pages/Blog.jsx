@@ -12,12 +12,12 @@ const Blog = () => {
       date: "April 10, 2026",
       readTime: "4 min read",
       category: "Heritage",
-      author: "SSRJ Team",
+      author: "Saree Suhag Team",
       imageUrl: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=1200", 
       content: `
         The handloom saree is not merely a garment; it is an architectural marvel of silk and zari. Today, we are witnessing a renaissance in how these heirlooms are styled and perceived.
 
-        The modern approach focuses on breathability, subtle gold accents, and the profound depth of the fabric's dye. At SSRJ, our curation focuses on pieces that retain the visual weight of classic brocade while allowing the wearer to move with effortless grace.
+        The modern approach focuses on breathability, subtle gold accents, and the profound depth of the fabric's dye. At Saree Suhag, our curation focuses on pieces that retain the visual weight of classic brocade while allowing the wearer to move with effortless grace.
       `
     }
   ];
@@ -30,7 +30,7 @@ const Blog = () => {
         <div className="mb-20 text-center md:text-left border-b border-zinc-200 pb-12 w-full">
           <div className="animate-[fadeSlideUp_0.8s_ease-out_both]">
             <span className="text-zinc-400 tracking-[0.2em] uppercase text-xs font-bold mb-4 block">
-              SSRJ Journal
+              Saree Suhag Journal
             </span>
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-zinc-900 mb-6 tracking-tight">
               Notes on Elegance.

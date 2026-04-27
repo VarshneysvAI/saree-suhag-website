@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand & Ethos Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
-              <h2 className="text-2xl font-serif text-zinc-900 tracking-tight">SSRJ</h2>
+              <h2 className="text-2xl font-serif text-zinc-900 tracking-tight">Saree Suhag</h2>
             </Link>
             <p className="text-zinc-500 font-light leading-relaxed max-w-sm mb-6 text-xs">
               Since 1977, we have woven tradition into modern elegance. 
@@ -65,7 +65,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-zinc-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-[10px] sm:text-xs font-medium text-zinc-400 tracking-wider">
-            &copy; {new Date().getFullYear()} SSRJ. ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} Saree Suhag. ALL RIGHTS RESERVED.
           </p>
           
           {/* Social Links — Real URLs */}

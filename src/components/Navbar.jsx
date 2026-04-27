@@ -38,7 +38,7 @@ const Navbar = () => {
                className={`h-16 md:h-20 w-auto object-contain drop-shadow-md transition-all duration-300 ${useDarkText ? '' : 'brightness-[5] drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]'}`}
              />
              <span className={`text-xl md:text-2xl font-serif tracking-tight font-medium group-hover:opacity-80 transition-colors duration-300 ${useDarkText ? 'text-zinc-900' : 'text-zinc-50 drop-shadow-lg'}`}>
-               SSRJ
+               Saree Suhag
              </span>
           </Link>
 

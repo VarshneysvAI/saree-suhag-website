@@ -89,7 +89,7 @@ const Hero = () => {
                     </span>
                   </Link>
                  <a 
-                    href="https://wa.me/917037404555?text=Hello%20SSRJ%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20collections."
+                    href="https://wa.me/917037404555?text=Hello%20Saree%20Suhag%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20collections."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative bg-zinc-900/60 backdrop-blur-3xl border border-white/20 text-white px-8 py-3.5 rounded-sm hover:bg-white hover:text-zinc-900 transition-all duration-500 ease-out shadow-2xl hover:scale-[1.02]"

@@ -5,7 +5,7 @@ const Collections = () => {
   const WHATSAPP_NUMBER = "917037404555";
 
   const handleWhatsAppBuy = () => {
-    const message = "Hello SSRJ, I would like to request access to the private bridal catalog.";
+    const message = "Hello Saree Suhag, I would like to request access to the private bridal catalog.";
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
@@ -36,7 +36,7 @@ const Collections = () => {
           </span>
           
           <h1 className="relative z-10 text-4xl md:text-6xl font-serif text-white mb-8 leading-tight drop-shadow-lg">
-            SSRJ Exclusive Collection.<br />
+            Saree Suhag Exclusive Collection.<br />
             <span className="italic font-light text-zinc-400 text-3xl md:text-5xl">Unveiling Soon.</span>
           </h1>
           

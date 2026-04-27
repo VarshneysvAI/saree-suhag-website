@@ -24,7 +24,7 @@ const Contact = () => {
     const { firstName, lastName, mobile, subject, message } = formData;
     
     // Construct the structured WhatsApp message
-    const waMessage = `*New Inquiry for SSRJ*%0A%0A` +
+    const waMessage = `*New Inquiry for Saree Suhag*%0A%0A` +
       `*Name:* ${firstName} ${lastName}%0A` +
       `*Mobile:* ${mobile}%0A` +
       `*Type:* ${subject}%0A%0A` +
@@ -46,7 +46,7 @@ const Contact = () => {
               Private Appointments
             </span>
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-zinc-900 mb-6">
-              Connect with SSRJ
+              Connect with Saree Suhag
             </h1>
             <p className="text-lg text-zinc-600 font-light max-w-2xl mx-auto">
               Our concierge team is at your disposal to arrange bespoke viewings, styling consultations, or to answer any inquiries regarding our collections.
@@ -202,7 +202,7 @@ const Contact = () => {
                 allowFullScreen="" 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="SSRJ Store Location"
+                title="Saree Suhag Store Location"
                 className="w-full h-full"
               ></iframe>
             </div>

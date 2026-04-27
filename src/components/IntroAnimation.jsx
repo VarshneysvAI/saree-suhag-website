@@ -5,7 +5,7 @@ const IntroAnimation = ({ onComplete }) => {
   const calledComplete = useRef(false);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem('ssrj-visited');
+    const hasVisited = sessionStorage.getItem('saree-suhag-visited');
     
     if (hasVisited) {
       setPhase('done');
@@ -16,7 +16,7 @@ const IntroAnimation = ({ onComplete }) => {
       return;
     }
 
-    sessionStorage.setItem('ssrj-visited', 'true');
+    sessionStorage.setItem('saree-suhag-visited', 'true');
 
     // Phase 1: Hold the curtain visible for 400ms
     setPhase('hold');
@@ -89,7 +89,7 @@ const IntroAnimation = ({ onComplete }) => {
           }}
         />
 
-        {/* SSRJ Logo Text */}
+        {/* Saree Suhag Logo Text */}
         <h1
           style={{
             fontSize: 'clamp(3rem, 8vw, 6rem)',
@@ -105,7 +105,7 @@ const IntroAnimation = ({ onComplete }) => {
             zIndex: 10,
           }}
         >
-          SSRJ
+          Saree Suhag
         </h1>
       </div>
     </div>
