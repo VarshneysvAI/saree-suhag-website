@@ -8,11 +8,242 @@
   <meta name="description"
     content="Since 1977, Saree Suhag has woven tradition into modern elegance. India's premier destination for bespoke handloom sarees and designer groomswear." />
   <title>Saree Suhag</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <script>
+    function createWhatsAppWidget(phoneNumber, message , position ,companyName , subtitle, brandLogo ,welcomeMessage , actionBtnText , themeColor , buttonText) {
+     const whatsappButton = document.createElement('div');
+     whatsappButton.style.position = 'fixed';
+     whatsappButton.style.bottom = '20px';
+     whatsappButton.style[position === 'right' ? 'right' : 'left'] = '20px';
+     whatsappButton.style.width = 'auto';
+     whatsappButton.style.padding = '20px';
+     whatsappButton.style.backgroundColor = '#25D366';
+     whatsappButton.style.borderRadius = '50px';
+     whatsappButton.style.display = 'flex';
+     whatsappButton.style.alignItems = 'center';
+     whatsappButton.style.justifyContent = 'center';
+     whatsappButton.style.cursor = 'pointer';
+     whatsappButton.style.zIndex='9999999999';
+     const icon = document.createElement('img');
+     icon.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg';
+     icon.style.width = '30px';
+     icon.style.height = '30px';
+     const btnText = document.createElement('span');
+     btnText.innerText=buttonText;
+     btnText.style.color='#fff';
+     btnText.style.fontSize='20px';
+     btnText.style.fontWeight='500';
+     btnText.style.fontFamily='Inter, Noto Sans TC, Noto Sans SC, Helvetica, Arial, sans-serif';
+     whatsappButton.appendChild(icon );
+     whatsappButton.appendChild(btnText);
+     whatsappButton.addEventListener('click', function () {
+         if (widget.style.display === 'flex') {
+             widget.style.display = 'none';
+         } else {
+             widget.style.display = 'flex';
+         }
+     });
+     document.body.appendChild(whatsappButton);
+ 
+     const widget = document.createElement('div');
+     widget.id = 'widget';
+     widget.style.display='none';
+     widget.style.flexDirection='column';
+     widget.style.width='400px';
+     widget.style.position='fixed';
+     widget.style[position === 'right' ? 'right' : 'left'] = '20px';
+     widget.style.bottom='100px';
+     widget.style.zIndex='9999999999';
+ 
+     const chatWindow = document.createElement('div');
+     chatWindow.id = 'wa-chat-window';
+     chatWindow.className = 'wa-widget-body';
+     chatWindow.style.fontFamily='Inter, Noto Sans TC, Noto Sans SC, Helvetica, Arial, sans-serif';
+     chatWindow.style.marginBottom='16px';
+     chatWindow.style.height='453px';
+     chatWindow.style.display='grid';
+     chatWindow.style.gridTemplateRows='81px minmax(0, 1fr)';
+     chatWindow.style.overflow='hidden';
+     chatWindow.style.borderRadius='24px';
+     chatWindow.style.backgroundColor='#fff';
+     chatWindow.style.boxShadow=' 0 24px 50px 10px rgba(0,102,255,.07)';
+     chatWindow.style.width='400px';
+ 
+     const bodyInner = document.createElement('div');
+     bodyInner.style.padding='10px 24px';
+     bodyInner.style.display='flex';
+     bodyInner.style.alignItems='center';
+     bodyInner.style.justifyContent='space-between';
+     bodyInner.style.backgroundColor=themeColor;
+     const brandContainer = document.createElement('div');
+     brandContainer.style.display = 'flex';
+     brandContainer.style.width = '100%';
+     const brandImage = document.createElement('img');
+     brandImage.src = brandLogo;
+     brandImage.style.height = '45px';
+     brandImage.style.width = '45px';
+     brandImage.style.borderRadius = '50%';
+     brandContainer.appendChild(brandImage);
+ 
+     const brandDetails = document.createElement('div');
+     brandDetails.style.paddingLeft = '8px';
+     brandDetails.style.display = 'flex';
+     brandDetails.style.flexDirection = 'column';
+     brandDetails.style.color = 'white';
+ 
+     const brandName = document.createElement('p');
+     brandName.className = 'font-header';
+     brandName.style.fontSize = '1.25rem';
+     brandName.style.fontWeight = '500';
+     brandName.style.lineHeight = '1.5rem';
+     brandName.style.margin = '0px';
+     brandName.innerText = companyName;
+ 
+     const brandAccountType = document.createElement('p');
+     brandAccountType.style.margin = '0px';
+     brandAccountType.style.fontSize = '0.875rem';
+     brandAccountType.style.lineHeight = '1.25rem';
+     brandAccountType.innerText = subtitle;
+ 
+     brandDetails.appendChild(brandName);
+     brandDetails.appendChild(brandAccountType);
+     brandContainer.appendChild(brandDetails);
+     bodyInner.appendChild(brandContainer);
+ 
+     const closeButton = document.createElement('div');
+     closeButton.className = 'fas fa-times';
+     closeButton.style.color = '#fff';
+     closeButton.style.cursor = 'pointer';
+     bodyInner.appendChild(closeButton);
+     chatWindow.appendChild(bodyInner);
+     closeButton.addEventListener('click', function () {
+         widget.style.display = 'none';
+     });
+ 
+     const chatWrapper = document.createElement('div');
+     chatWrapper.style.background = 'url(https://omni.azmarq.com/assets/images/whatsapp_bg.png)';
+     chatWrapper.style.backgroundSize = 'contain';
+     chatWrapper.style.position='relative';
+     chatWrapper.style.height='100%';
+     chatWrapper.style.padding='24px';
+     chatWrapper.style.display='flex';
+     chatWrapper.style.flexDirection='column';
+     chatWrapper.style.backgroundColor='#fff';
+ 
+     const chatBubbleWrapper = document.createElement('div');
+     chatBubbleWrapper.style.zIndex='10';
+     chatBubbleWrapper.style.height='max-content';
+     chatBubbleWrapper.style.height='-moz-max-content';
+     chatBubbleWrapper.style.maxHeight='100%';
+     chatBubbleWrapper.style.maxWidth='80%';
+     chatBubbleWrapper.style.borderRadius='16px';
+     chatBubbleWrapper.style.padding='10px 18px';
+     chatBubbleWrapper.style.background='#fff';
+     const helloPre = document.createElement('div');
+     helloPre.style.whiteSpace = 'pre-wrap';
+     helloPre.innerText = welcomeMessage;
+     chatBubbleWrapper.appendChild(helloPre);
+     chatWrapper.appendChild(chatBubbleWrapper);
+ 
+     const selfChatWrapper = document.createElement('div');
+     selfChatWrapper.style.zIndex='10';
+     selfChatWrapper.style.display='flex';
+     selfChatWrapper.style.width='100%';
+     selfChatWrapper.style.justifyContent='flex-end';
+     const selfChatBubble = document.createElement('div');
+     selfChatBubble.style.display='flex';
+     selfChatBubble.style.backgroundColor=' #dcf7c5';
+     selfChatBubble.style.marginTop=' 16px';
+     selfChatBubble.style.padding=' 18px';
+     selfChatBubble.style.borderRadius=' 16px';
+     selfChatBubble.style.width=' 80%';
+     selfChatBubble.style.overflow='auto';
+     selfChatBubble.style.maxHeight='80%';
+     selfChatBubble.innerText = message;
+ 
+     selfChatWrapper.appendChild(selfChatBubble);
+     chatWrapper.appendChild(selfChatWrapper);
+     chatWindow.appendChild(chatWrapper);
+ 
+     const startChatSection = document.createElement('div');
+     startChatSection.style.zIndex='50';
+     startChatSection.style.display='flex';
+     startChatSection.style.backgroundColor='#fff';
+     startChatSection.style.padding='20px 24px';
+     startChatSection.style.flexDirection='column';
+     const startChatLink = document.createElement('a');
+     const encodedMessage = encodeURIComponent(message);
+     startChatLink.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+     startChatLink.target = '_blank';
+     startChatLink.style.textDecoration = 'none';
+     startChatLink.style.width = '100%';
+ 
+     const startChatButton = document.createElement('button');
+     startChatButton.style.cursor='pointer';
+     startChatButton.style.borderWidth='0';
+     startChatButton.style.height='45px';
+     startChatButton.style.width='100%';
+     startChatButton.style.alignSelf='end';
+     startChatButton.style.borderRadius='50px';
+     startChatButton.style.backgroundColor=themeColor;
+     startChatButton.style.justifyContent='center';
+     startChatButton.style.display='flex';
+     startChatButton.style.alignItems='center';
+     startChatButton.style.color='#fff';
+     startChatButton.style.fontSize='17px';
+     startChatButton.style.fontWeight='500';
+ 
+     const startChatButtonInner = document.createElement('div');
+     startChatButtonInner.style.display='flex';
+     startChatButtonInner.style.alignItems='center';
+     startChatButtonInner.style.position='relative';
+     startChatButtonInner.style.justifyContent='center';
+     const chatIcon = document.createElement('i');
+     chatIcon.className = 'fab fa-whatsapp';
+     chatIcon.style.fontSize = '18px';
+     chatIcon.style.color = '#FFFFFF';
+     startChatButtonInner.appendChild(chatIcon);
+ 
+     const chatNowText = document.createElement('p');
+     chatNowText.style.margin = '0px';
+     chatNowText.style.marginLeft = '10px';
+     chatNowText.style.marginBottom = '0px';
+     chatNowText.innerText = actionBtnText;
+ 
+     startChatButtonInner.appendChild(chatNowText);
+     startChatButton.appendChild(startChatButtonInner);
+     startChatLink.appendChild(startChatButton);
+     startChatSection.appendChild(startChatLink);
+     chatWindow.appendChild(startChatSection);
+ 
+     const poweredByContainer = document.createElement('p');
+     poweredByContainer.style.textAlign = 'center';
+     poweredByContainer.style.marginTop = '0px';
+     const poweredBySpan = document.createElement('span');
+     const poweredByLogo = document.createElement('span');
+     poweredByLogo.className = 'fas fa-bolt';
+     poweredByLogo.style.color = '#f09220';
+     poweredByLogo.style.marginRight = '10px';
+     poweredByContainer.appendChild(poweredByLogo);
+ 
+     poweredByContainer.appendChild(document.createTextNode('Powered by '));
+     const poweredByLink = document.createElement('a');
+     poweredByLink.href = '#';
+     const azmarqLabel = document.createElement('span');
+     azmarqLabel.innerText = companyName;
+     poweredByLink.appendChild(azmarqLabel);
+     poweredByContainer.appendChild(poweredByLink);
+     chatWindow.appendChild(poweredByContainer);
+     widget.appendChild(chatWindow);
+     document.body.appendChild(widget);
+ }  
+ createWhatsAppWidget('+918650000265','! Hi, I want to know more','right','sareesuhag','Typically replies within a day','https://omni-whtaspp-media.s3.ap-south-1.amazonaws.com/whatsapp-logo-icon-free-png.webp',`Hi there 👋 welcome to Saree suhag\n             Sikandra rao \n`,'Start Chat','#00796a','saree suhag'); 
+ </script>
 </body>
 
 </html>

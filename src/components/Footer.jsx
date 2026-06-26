@@ -32,9 +32,9 @@ const Footer = () => {
           <div>
             <h3 className="text-xs font-bold tracking-widest text-zinc-900 uppercase mb-4">Connect</h3>
             <ul className="space-y-3 text-xs">
-              <li><Link to="/collections" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">Curated Collections</Link></li>
+              <li><a href="https://sareesuhag.in" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">Curated Collections</a></li>
               <li><Link to="/blog" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">Journal & Archives</Link></li>
-              <li><Link to="/contact" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">Private Appointments</Link></li>
+              <li><Link to="/contact" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">Inquire / Appointments</Link></li>
               <li><a href="https://wa.me/917037404555" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 transition-colors duration-300">WhatsApp Concierge</a></li>
             </ul>
           </div>
@@ -49,13 +49,16 @@ const Footer = () => {
                   Rathi Chauraha, Main Market,<br /> Sikandra Rao, Hathras, U.P.
                 </a>
               </li>
-              <li className="flex items-center gap-3 group cursor-pointer border-b border-zinc-50 pb-2">
-                <Phone className="text-zinc-400 flex-shrink-0 group-hover:text-zinc-900 transition-colors" size={14} />
-                <a href="tel:+917037404555" className="text-zinc-500 group-hover:text-zinc-900 transition-colors">+91 70374 04555</a>
+              <li className="flex items-start gap-3 group cursor-pointer border-b border-zinc-50 pb-2">
+                <Phone className="text-zinc-400 mt-0.5 flex-shrink-0 group-hover:text-zinc-900 transition-colors" size={14} />
+                <div className="flex flex-col space-y-1">
+                  <a href="tel:+917037404555" className="text-zinc-500 group-hover:text-zinc-900 transition-colors">+91 70374 04555</a>
+                  <a href="tel:+918650000265" className="text-zinc-500 group-hover:text-zinc-900 transition-colors">+91 86500 00265</a>
+                </div>
               </li>
               <li className="flex items-center gap-3 group cursor-pointer">
                 <Mail className="text-zinc-400 flex-shrink-0 group-hover:text-zinc-900 transition-colors" size={14} />
-                <a href="mailto:Sareesuhag1982@gmail.com" className="text-zinc-500 group-hover:text-zinc-900 transition-colors">Sareesuhag1982@gmail.com</a>
+                <a href="mailto:krishna@sareesuhag.com" className="text-zinc-500 group-hover:text-zinc-900 transition-colors">krishna@sareesuhag.com</a>
               </li>
             </ul>
           </div>
@@ -70,7 +73,7 @@ const Footer = () => {
           
           {/* Social Links — Real URLs */}
           <div className="flex space-x-3">
-            <a href="https://www.instagram.com/sareesuhag_srao?igsh=MTN5MnEwNTlwazZ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 hover:-translate-y-1" aria-label="Instagram">
+            <a href="https://www.instagram.com/sareesuhag.in?igsh=MTN5MnEwNTlwazZ2YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 hover:-translate-y-1" aria-label="Instagram">
               <Camera size={14} />
             </a>
             <a href="https://www.facebook.com/share/1bnKHtKB6o/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-500 hover:border-zinc-900 hover:bg-zinc-900 hover:text-white transition-all duration-300 hover:-translate-y-1" aria-label="Facebook">

@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,6 +21,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <IntroAnimation onComplete={() => setShowContent(true)} />
       
       <div 

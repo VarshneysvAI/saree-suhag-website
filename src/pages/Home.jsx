@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Camera } from 'lucide-react';
 
 const Home = () => {
   return (
@@ -32,16 +32,48 @@ const Home = () => {
               Our artisans are currently finalizing the digital showcase of our premium bridal and unstitched collections. Perfection cannot be rushed.
             </p>
             
-            <Link 
-              to="/collections" 
+            <a 
+              href="https://sareesuhag.in"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center space-x-3 bg-zinc-900 text-white px-8 py-4 rounded-full hover:bg-zinc-800 transition-all transform hover:scale-[1.02] active:scale-100 duration-300"
             >
-              <span className="text-sm uppercase tracking-widest font-medium">Explore the Archives</span>
+              <span className="text-sm uppercase tracking-widest font-medium">Shop Now</span>
               <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
         </motion.div>
       </section>
+
+      {/* Instagram Section */}
+      <section className="py-20 bg-zinc-50 border-t border-zinc-200">
+        <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+          <div className="w-16 h-16 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-pink-500/20">
+            <i className="fab fa-instagram text-[32px] text-white leading-none"></i>
+          </div>
+          <h2 className="font-serif text-3xl md:text-4xl text-zinc-900 mb-4">Follow Our Journey</h2>
+          <p className="text-zinc-500 mb-8 max-w-lg">Behind the looms, draping sessions, bridal moments, and our latest curated collections.</p>
+          
+          <a
+            href="https://www.instagram.com/sareesuhag.in?igsh=MTN5MnEwNTlwazZ2YQ%3D%3D&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-3 bg-zinc-900 text-white px-8 py-4 rounded-full hover:bg-zinc-800 transition-all shadow-xl hover:shadow-zinc-900/20 transform hover:-translate-y-1 duration-300"
+          >
+            <span className="text-sm uppercase tracking-widest font-medium">Follow @sareesuhag.in</span>
+          </a>
+        </div>
+      </section>
+      
+      <a
+        href="https://sareesuhag.in"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-amber-600 text-white px-6 py-3 rounded-full shadow-2xl hover:bg-amber-700 transition-all duration-300 flex items-center space-x-2 animate-[bounce-slow_3s_ease-in-out_infinite]"
+      >
+        <ShoppingBag size={20} />
+        <span className="font-medium">Shop Now</span>
+      </a>
     </div>
   );
 };

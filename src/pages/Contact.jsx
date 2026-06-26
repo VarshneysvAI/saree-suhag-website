@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -59,6 +59,17 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="bg-white p-10 md:p-12 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-zinc-100 animate-[fadeSlideUp_0.8s_ease-out_0.2s_both]">
             <h2 className="text-2xl font-serif text-zinc-900 mb-8">Send an Inquiry</h2>
+            
+            <a
+              href="https://wa.me/917037404555?text=Hi%20Saree%20Suhag!%20I%20would%20like%20to%20book%20a%20private%20appointment."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-3 bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-xl hover:bg-green-100 transition-colors mb-8"
+            >
+              <MessageCircle size={20} />
+              <span className="font-medium">Chat on WhatsApp for Instant Reply</span>
+            </a>
+
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -172,8 +183,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold tracking-widest text-zinc-900 uppercase mb-2">Direct Line</h3>
-                    <p className="text-zinc-500 font-light leading-relaxed">
+                    <p className="text-zinc-500 font-light leading-relaxed flex flex-col space-y-1">
                       <a href="tel:+917037404555" className="hover:text-zinc-900 transition-colors">+91 70374 04555</a>
+                      <a href="tel:+918650000265" className="hover:text-zinc-900 transition-colors">+91 86500 00265</a>
                     </p>
                   </div>
                 </div>
@@ -185,7 +197,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-sm font-semibold tracking-widest text-zinc-900 uppercase mb-2">Email</h3>
                     <p className="text-zinc-500 font-light leading-relaxed">
-                      <a href="mailto:Sareesuhag1982@gmail.com" className="hover:text-zinc-900 transition-colors">Sareesuhag1982@gmail.com</a>
+                      <a href="mailto:krishna@sareesuhag.com" className="text-zinc-500 hover:text-zinc-900 transition-colors">krishna@sareesuhag.com</a>
                     </p>
                   </div>
                 </div>

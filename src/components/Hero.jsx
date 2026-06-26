@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero = () => {
   return (
@@ -69,25 +71,66 @@ const Hero = () => {
           
           {/* Content Over Video */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pb-8 px-4 text-center">
-              <div className="animate-[fadeSlideUp_1.2s_ease-out_1s_both]">
-                <span className="text-zinc-400 tracking-[0.5em] uppercase text-[9px] md:text-xs font-bold mb-4 md:mb-6 block drop-shadow-lg">
+              <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.3, delayChildren: 0.8 }
+                  }
+                }}
+              >
+                <motion.span 
+                  variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut' } } }}
+                  className="text-zinc-400 tracking-[0.5em] uppercase text-[9px] md:text-xs font-bold mb-4 md:mb-6 block drop-shadow-lg"
+                >
                   Since 1977 — A Saree Legacy
-                </span>
+                </motion.span>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif text-white tracking-tight leading-[0.95] mb-8 drop-shadow-[0_10px_40px_rgba(0,0,0,0.9)]">
-                  <span className="block font-light">The Future of</span>
-                  <span className="block italic mt-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400">Ethnic Elegance</span>
+                  <motion.span 
+                    variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } } }}
+                    className="block font-light"
+                  >
+                    The Future of
+                  </motion.span>
+                  <motion.div 
+                    variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] } } }}
+                    className="block italic mt-2 text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400 h-[1.2em]"
+                  >
+                    <TypeAnimation
+                      sequence={[
+                        'Ethnic Elegance',
+                        2000,
+                        'Handloom Heritage',
+                        2000,
+                        'Bespoke Bridal',
+                        2000,
+                        'Royal Silks',
+                        2000
+                      ]}
+                      wrapper="span"
+                      speed={50}
+                      deletionSpeed={60}
+                      repeat={Infinity}
+                      className="inline-block"
+                    />
+                  </motion.div>
                 </h1>
-              </div>
+              </motion.div>
               
               <div className="animate-[fadeSlideUp_1.2s_ease-out_1.4s_both] flex flex-col sm:flex-row items-center gap-6 mt-6">
-                 <Link 
-                    to="/collections" 
+                 <a 
+                    href="https://sareesuhag.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group relative bg-white text-zinc-900 px-8 py-3.5 rounded-sm hover:scale-[1.02] transition-all duration-500 ease-out shadow-2xl border border-zinc-200"
                   >
                     <span className="relative z-10 text-[10px] md:text-xs uppercase tracking-[0.25em] font-extrabold flex items-center gap-3">
-                       Explore The Archives <ChevronRight size={14} />
+                       Shop Now <ChevronRight size={14} />
                     </span>
-                  </Link>
+                  </a>
                  <a 
                     href="https://wa.me/917037404555?text=Hello%20Saree%20Suhag%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20collections."
                     target="_blank"

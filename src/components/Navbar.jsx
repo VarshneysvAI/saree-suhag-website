@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import { Menu, X, MessageCircle, ExternalLink } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +46,6 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-12">
             {[
               { path: '/', label: 'Home' },
-              { path: '/collections', label: 'Collections' },
               { path: '/blog', label: 'Journal' }
             ].map((link) => (
               <NavLink 
@@ -66,7 +65,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center space-x-4">
              <Link 
               to="/contact"
               className={`flex items-center space-x-2 backdrop-blur-md border px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-[1.02] active:scale-100 ${
@@ -78,6 +77,14 @@ const Navbar = () => {
               <MessageCircle size={16} />
               <span className="text-xs uppercase tracking-widest font-semibold">Inquire</span>
             </Link>
+            <a
+              href="https://sareesuhag.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs uppercase tracking-widest bg-amber-600 text-white px-6 py-2.5 rounded-full hover:bg-amber-700 transition-all duration-300 shadow-lg hover:shadow-amber-600/30 font-semibold"
+            >
+              Shop Now
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,7 +110,6 @@ const Navbar = () => {
         <div className="flex flex-col items-center space-y-8 w-full px-6">
           {[
             { path: '/', label: 'Home' },
-            { path: '/collections', label: 'Collections' },
             { path: '/blog', label: 'Journal' },
           ].map((link) => (
             <NavLink 
@@ -116,15 +122,24 @@ const Navbar = () => {
             </NavLink>
           ))}
           
-          <div className="mt-12">
+          <div className="mt-12 flex flex-col space-y-4 w-full">
             <Link 
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center space-x-2 bg-zinc-900 text-white px-8 py-4 rounded-full shadow-2xl hover:bg-zinc-800 transition-colors duration-300"
+              className="flex items-center justify-center space-x-2 bg-zinc-900 text-white px-8 py-4 rounded-full shadow-2xl hover:bg-zinc-800 transition-colors duration-300 w-full"
             >
               <MessageCircle size={20} />
               <span className="text-sm uppercase tracking-widest font-medium">Contact Us</span>
             </Link>
+            <a
+              href="https://sareesuhag.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-2 bg-amber-600 text-white px-8 py-4 rounded-full shadow-2xl hover:bg-amber-700 transition-colors duration-300 w-full"
+            >
+              <span className="text-sm uppercase tracking-widest font-medium">Shop Now</span>
+              <ExternalLink size={18} />
+            </a>
           </div>
         </div>
       </div>
